@@ -6,7 +6,7 @@ import datetime
 
 
 #Define upper Price Limit for card search
-upperPriceLimit = 30
+upperPriceLimit = 20
 # Define the directory to save the bulk data files
 save_directory = r'C:/Users/Jonat/Documents/Scryfall/bulk-data/'
 os.makedirs(save_directory, exist_ok=True)
@@ -42,7 +42,8 @@ with open(all_cards_path, 'r', encoding="utf-8") as file:
 
 # Extract card names and USD prices for testing (limit to 10 entries)
 cards_and_prices = []
-for card in all_cards[:20]:  # Limit to first 10 entries
+for card in all_cards:  # Limit to first 10 entries
+# for card in all_cards[:20]:  # Limit to first 10 entries
     if card['prices']['usd'] != None:
         if float(card['prices']['usd']) < upperPriceLimit:
             card_name = card['name']
